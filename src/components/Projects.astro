@@ -1,0 +1,40 @@
+---
+import ProjectCard from './ProjectCard.astro';
+
+const projects = [
+  {
+    title: 'E-commerce Platform',
+    description: 'A full-featured e-commerce solution with real-time inventory management, payment processing, and admin dashboard.',
+    tags: ['React', 'Node.js', 'MongoDB'],
+    liveUrl: 'https://example.com',
+    githubUrl: 'https://github.com',
+  },
+  {
+    title: 'Portfolio Website',
+    description: 'A minimalist portfolio for a photography artist featuring a masonry grid gallery and smooth transitions.',
+    tags: ['Astro', 'TailwindCSS', 'JavaScript'],
+    liveUrl: 'https://example.com',
+    githubUrl: 'https://github.com',
+  },
+  {
+    title: 'Task Management App',
+    description: 'A collaborative task management platform with real-time updates, file sharing, and team chat functionality.',
+    tags: ['Vue.js', 'Firebase', 'Sass'],
+    liveUrl: 'https://example.com',
+    githubUrl: 'https://github.com',
+  },
+];
+---
+
+<section id="projects" class="py-20">
+  <div class="container mx-auto px-6">
+    <h2 class="text-4xl font-display font-bold text-secondary mb-12 text-center" data-aos="fade-up">
+      Featured Projects
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {projects.map((project) => (
+        <ProjectCard {...project} />
+      ))}
+    </div>
+  </div>
+</section>

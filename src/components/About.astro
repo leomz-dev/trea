@@ -1,0 +1,64 @@
+---
+const experiences = [
+  {
+    icon: '🎨',
+    title: 'UI/UX Design',
+    description: 'Creating beautiful and intuitive interfaces that delight users and solve real problems.',
+    years: '4+ years',
+  },
+  {
+    icon: '💻',
+    title: 'Development',
+    description: 'Building scalable and performant web applications using modern technologies.',
+    years: '5+ years',
+  },
+  {
+    icon: '🎯',
+    title: 'Strategy',
+    description: 'Crafting digital strategies that align with business goals and user needs.',
+    years: '3+ years',
+  },
+];
+---
+
+<section id="about" class="py-20 bg-gradient-to-b from-gray-50 to-white">
+  <div class="container mx-auto px-6">
+    <div class="max-w-4xl mx-auto" data-aos="fade-up">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-display font-bold text-secondary mb-6">About Me</h2>
+        <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+          As a passionate web developer and designer, I bridge the gap between design and functionality. 
+          With a deep understanding of both frontend and backend technologies, I create seamless digital 
+          experiences that not only look beautiful but also perform exceptionally well.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4 mb-12">
+          <span class="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm">
+            Problem Solver
+          </span>
+          <span class="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm">
+            Creative Thinker
+          </span>
+          <span class="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm">
+            Detail Oriented
+          </span>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {experiences.map((item) => (
+          <div 
+            class="p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1"
+            data-aos="fade-up"
+          >
+            <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 text-2xl">
+              {item.icon}
+            </div>
+            <h3 class="font-display font-bold text-xl mb-2">{item.title}</h3>
+            <p class="text-gray-600 mb-4">{item.description}</p>
+            <span class="text-sm font-semibold text-primary">{item.years}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,31 @@
+---
+const navItems = [
+  { href: '#home', text: 'Home' },
+  { href: '#about', text: 'About' },
+  { href: '#projects', text: 'Projects' },
+  { href: '#skills', text: 'Skills' },
+  { href: '#contact', text: 'Contact' },
+];
+---
+
+<header class="fixed w-full top-0 z-50 bg-white/80 backdrop-blur-sm">
+  <nav class="container mx-auto px-6 py-4">
+    <div class="flex items-center justify-between">
+      <a href="#" class="text-2xl font-display font-bold text-secondary">
+        Leo<span class="text-primary">.</span>dev
+      </a>
+      <ul class="hidden md:flex space-x-8">
+        {navItems.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              class="text-secondary hover:text-primary transition-colors duration-300"
+            >
+              {item.text}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </nav>
+</header>
