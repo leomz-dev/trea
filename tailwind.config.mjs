@@ -9,6 +9,7 @@ export default {
       },
       colors: {
         primary: '#2563eb',
+        whatsapp: '#25d366',
         secondary: '#1e293b',
       },
     },

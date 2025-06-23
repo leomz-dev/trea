@@ -11,13 +11,7 @@ const experiences = [
     title: 'Profesional',
     description: '¿Tienes mucho trabajo y estas agobiado? Con tra puedes resolver cualquier tipo de trabajo.',
     years: 'Saber mas.',
-  },
-  {
-    icon: '🎯',
-    title: 'Strategy',
-    description: 'Crafting digital strategies that align with business goals and user needs.',
-    years: '3+ years',
-  },
+  }
 ];
 ---
 
@@ -46,7 +40,7 @@ const experiences = [
         </div>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="flex flex-row items-center justify-center gap-8">
         {experiences.map((item) => (
           <div 
             class="p-6 bg-white shadow-2xl shadow-blue-500/20 hover:shadow-[0_20px_50px_rgba(8,_112,_184,_0.4)] rounded-xl transition-all duration-300 transform hover:-translate-y-1"
@@ -63,4 +57,5 @@ const experiences = [
       </div>
     </div>
   </div>
+
 </section>
