@@ -1,5 +1,5 @@
 ---
-const whatsappBaseURL = "https://wa.me/573046101560";
+const whatsappNumber = "573046101560";
 ---
 
 <section id="contact" class="py-20">
@@ -36,12 +36,10 @@ const whatsappBaseURL = "https://wa.me/573046101560";
         </div>
 
         <div class="text-center">
-          <a id="whatsapp-link" href="#" target="_blank">
-            <button type="button"
-              class="bg-green-500 hover:bg-green-600 transition-colors text-white font-semibold py-4 px-6 rounded-xl">
-              Escríbenos por WhatsApp
-            </button>
-          </a>
+          <button type="submit"
+            class="bg-green-500 hover:bg-green-600 transition-colors text-white font-semibold py-4 px-6 rounded-xl">
+            Escríbenos por WhatsApp
+          </button>
         </div>
       </form>
     </div>
@@ -49,9 +47,10 @@ const whatsappBaseURL = "https://wa.me/573046101560";
 
   <script type="text/javascript">
     const form = document.getElementById("contact-form");
-    const whatsappLink = document.getElementById("whatsapp-link");
 
-    form.addEventListener("input", () => {
+    form.addEventListener("submit", function (e) {
+      e.preventDefault(); // Evita el comportamiento por defecto del formulario
+
       const name = document.getElementById("name").value.trim();
       const interest = document.getElementById("interest").value.trim();
 
@@ -64,8 +63,8 @@ const whatsappBaseURL = "https://wa.me/573046101560";
       }
       message += ", quedo atento!";
 
-      const encodedMessage = encodeURIComponent(message);
-      whatsappLink.href = `${whatsappBaseURL}?text=${encodedMessage}`;
+      const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+      window.open(whatsappURL, "_blank");
     });
   </script>
 </section>
