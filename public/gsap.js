@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     gsap.from('.hero-title', { 
         y: 100, 
         opacity: 0, 
-        duration: 100, 
+        duration: 1, 
         ease: 'power4.out',
         scrollTrigger: {
             trigger: '.hero-title',
