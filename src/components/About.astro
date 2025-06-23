@@ -2,15 +2,15 @@
 const experiences = [
   {
     icon: '🎨',
-    title: 'UI/UX Design',
-    description: 'Creating beautiful and intuitive interfaces that delight users and solve real problems.',
-    years: '4+ years',
+    title: 'Educación',
+    description: '¿Necesitas clase de alguna asignatura en especifico? Con trea podemos ayudarte.',
+    years: 'Saber mas.',
   },
   {
     icon: '💻',
-    title: 'Development',
-    description: 'Building scalable and performant web applications using modern technologies.',
-    years: '5+ years',
+    title: 'Profesional',
+    description: '¿Tienes mucho trabajo y estas agobiado? Con tra puedes resolver cualquier tipo de trabajo.',
+    years: 'Saber mas.',
   },
   {
     icon: '🎯',
@@ -24,30 +24,32 @@ const experiences = [
 <section id="about" class="py-20 bg-gradient-to-b from-gray-50 to-white">
   <div class="container mx-auto px-6">
     <div class="max-w-4xl mx-auto" data-aos="fade-up">
-      <div class="text-center mb-16">
-        <h2 class="text-4xl font-display font-bold text-secondary mb-6">About Me</h2>
-        <p class="text-lg text-gray-600 mb-8 leading-relaxed">
-          As a passionate web developer and designer, I bridge the gap between design and functionality. 
-          With a deep understanding of both frontend and backend technologies, I create seamless digital 
-          experiences that not only look beautiful but also perform exceptionally well.
+      <div class="flex flex-col items-center text-center justify-center mb-16">
+        <h2 class="text-4xl font-display font-bold text-secondary mb-6">Sobre nosotros</h2>
+        <p class="max-w-xl text-lg text-gray-600 mb-8 leading-relaxed">
+          Somos una agencia de apoyo academico y profesional, caracterizada por nuestra agilidad y eficiencia en cualquier tipo de tarea que se nos sea asignada. Contamos con una amplia variedad de servicios para el cliente.
         </p>
         <div class="flex flex-wrap justify-center gap-4 mb-12">
           <span class="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm">
-            Problem Solver
+            Precisos
           </span>
           <span class="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm">
-            Creative Thinker
+            Pensamiento Creativo
           </span>
           <span class="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm">
-            Detail Oriented
+            Detallado
           </span>
+          <span class="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm">
+            Rapido
+          </span>
+
         </div>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         {experiences.map((item) => (
           <div 
-            class="p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1"
+            class="p-6 bg-white shadow-2xl shadow-blue-500/20 hover:shadow-[0_20px_50px_rgba(8,_112,_184,_0.4)] rounded-xl transition-all duration-300 transform hover:-translate-y-1"
             data-aos="fade-up"
           >
             <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 text-2xl">
