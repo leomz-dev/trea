@@ -1,21 +1,71 @@
 ---
+const whatsappBaseURL = "https://wa.me/573046101560";
 ---
 
 <section id="contact" class="py-20">
   <div class="container mx-auto px-6">
     <div class="max-w-3xl mx-auto text-center" data-aos="fade-up">
-      <h2 class="text-4xl font-display font-bold text-secondary mb-6">¡Contactanos!</h2>
+      <h2 class="text-4xl font-display font-bold text-secondary mb-6">¡Contáctanos!</h2>
       <p class="text-lg text-gray-600 mb-6">
         ¿Necesitas alguno de nuestros servicios? ¡No dudes en contactarnos!
       </p>
-      <div class="flex items-center justify-center gap-6">
-          <a 
-          href="https://wa.me/573046101560?text=Hola,%20quiero%20más%20información" 
-          target="_blank"
-            <button class="bg-green-500 hover:bg-green-600 transition-colors text-white font-semibold py-4 px-6 rounded-xl">
+
+      <form id="contact-form" class="text-left space-y-4 max-w-xl mx-auto">
+        <div>
+          <label for="name" class="block text-gray-700 font-medium mb-2">Nombre</label>
+          <input type="text" id="name" name="name" required
+            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" />
+        </div>
+
+        <div>
+          <label for="interest" class="block text-gray-700 font-medium mb-2">¿En qué estás interesado?</label>
+          <input type="text" id="interest" name="interest" required
+            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" />
+        </div>
+
+        <div>
+          <span class="block text-gray-700 font-medium mb-2">Servicios:</span>
+          <label class="flex items-center space-x-2 mb-2">
+            <input type="checkbox" value="Clases personalizadas" class="accent-green-500" />
+            <span>Clases personalizadas</span>
+          </label>
+          <label class="flex items-center space-x-2">
+            <input type="checkbox" value="Resolver trabajos" class="accent-green-500" />
+            <span>Resolver trabajos</span>
+          </label>
+        </div>
+
+        <div class="text-center">
+          <a id="whatsapp-link" href="#" target="_blank">
+            <button type="button"
+              class="bg-green-500 hover:bg-green-600 transition-colors text-white font-semibold py-4 px-6 rounded-xl">
               Escríbenos por WhatsApp
             </button>
-          </a>          
+          </a>
+        </div>
+      </form>
     </div>
   </div>
+
+  <script type="text/javascript">
+    const form = document.getElementById("contact-form");
+    const whatsappLink = document.getElementById("whatsapp-link");
+
+    form.addEventListener("input", () => {
+      const name = document.getElementById("name").value.trim();
+      const interest = document.getElementById("interest").value.trim();
+
+      const checkboxes = form.querySelectorAll("input[type='checkbox']:checked");
+      const selectedServices = Array.from(checkboxes).map(cb => cb.value).join(", ");
+
+      let message = `Hola, soy ${name || "[nombre]"}, estoy interesado en ${interest || "[opción seleccionada]"}`;
+      if (selectedServices) {
+        message += ` y me interesan los siguientes servicios: ${selectedServices}`;
+      }
+      message += ", quedo atento!";
+
+      const encodedMessage = encodeURIComponent(message);
+      whatsappLink.href = `${whatsappBaseURL}?text=${encodedMessage}`;
+    });
+  </script>
 </section>
