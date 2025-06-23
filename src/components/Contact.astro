@@ -1,5 +1,5 @@
 ---
-const whatsappNumber = "573046101560";
+const whatsappBaseURL = "https://wa.me/573046101560";
 ---
 
 <section id="contact" class="py-20">
@@ -26,45 +26,52 @@ const whatsappNumber = "573046101560";
         <div>
           <span class="block text-gray-700 font-medium mb-2">Servicios:</span>
           <label class="flex items-center space-x-2 mb-2">
-            <input type="checkbox" value="Clases personalizadas" class="accent-green-500" />
+            <input type="checkbox" value="Clases personalizadas" class="service-checkbox accent-green-500" />
             <span>Clases personalizadas</span>
           </label>
           <label class="flex items-center space-x-2">
-            <input type="checkbox" value="Resolver trabajos" class="accent-green-500" />
+            <input type="checkbox" value="Resolver trabajos" class="service-checkbox accent-green-500" />
             <span>Resolver trabajos</span>
           </label>
         </div>
 
         <div class="text-center">
-          <button type="submit"
-            class="bg-green-500 hover:bg-green-600 transition-colors text-white font-semibold py-4 px-6 rounded-xl">
-            Escríbenos por WhatsApp
-          </button>
+          <a 
+            id="whatsapp-link"
+            href="https://wa.me/573046101560?text=Hola,%20quiero%20más%20información" 
+            target="_blank"
+          >
+            <button type="button"
+              class="bg-green-500 hover:bg-green-600 transition-colors text-white font-semibold py-4 px-6 rounded-xl">
+              Escríbenos por WhatsApp
+            </button>
+          </a>
         </div>
       </form>
     </div>
   </div>
 
   <script type="text/javascript">
-    const form = document.getElementById("contact-form");
+    const nameInput = document.getElementById("name");
+    const interestInput = document.getElementById("interest");
+    const serviceCheckboxes = document.querySelectorAll(".service-checkbox");
+    const whatsappLink = document.getElementById("whatsapp-link");
 
-    form.addEventListener("submit", function (e) {
-      e.preventDefault(); // Evita el comportamiento por defecto del formulario
+    function updateWhatsAppLink() {
+      const name = nameInput.value.trim();
+      const interest = interestInput.value.trim();
 
-      const name = document.getElementById("name").value.trim();
-      const interest = document.getElementById("interest").value.trim();
+      const selectedServices = Array.from(serviceCheckboxes)
+        .filter(cb => cb.checked)
+        .map(cb => cb.value)
+        .join(", ");
 
-      const checkboxes = form.querySelectorAll("input[type='checkbox']:checked");
-      const selectedServices = Array.from(checkboxes).map(cb => cb.value).join(", ");
+      const message = `Hola, soy ${name}, estoy interesado en ${interest} del servicio ${selectedServices}`;
+      const encodedMessage = encodeURIComponent(message);
+      whatsappLink.href = `https://wa.me/573046101560?text=${encodedMessage}`;
+    }
 
-      let message = `Hola, soy ${name || "[nombre]"}, estoy interesado en ${interest || "[opción seleccionada]"}`;
-      if (selectedServices) {
-        message += ` y me interesan los siguientes servicios: ${selectedServices}`;
-      }
-      message += ", quedo atento!";
-
-      const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-      window.open(whatsappURL, "_blank");
-    });
+    // Actualizar el href cada vez que se cambie algo en el formulario
+    document.getElementById("contact-form").addEventListener("input", updateWhatsAppLink);
   </script>
 </section>
