@@ -1,0 +1,59 @@
+---
+// src/components/Services.astro
+const services = [
+  {
+    icon: '📚', // Placeholder icon, consider using SVG icons for consistency
+    title: 'Apoyo Educativo Personalizado',
+    description: 'Ofrecemos clases particulares y grupales en diversas asignaturas, adaptadas a las necesidades de cada estudiante. Ayuda con tareas, preparación para exámenes y refuerzo académico general para jóvenes y adultos.',
+    ctaText: 'Más Información',
+    ctaLink: '#contact', // Or a more specific link if available
+  },
+  {
+    icon: '💼', // Placeholder icon
+    title: 'Soluciones Profesionales Eficientes',
+    description: 'Asistencia en la elaboración de proyectos, presentaciones, informes y otros trabajos profesionales. Optimizamos tu tiempo y te ayudamos a alcanzar tus metas con entregables de alta calidad.',
+    ctaText: 'Cotizar Servicio',
+    ctaLink: '#contact', // Or a more specific link
+  }
+];
+---
+
+<section id="services" class="py-20 bg-gray-50">
+  <div class="container mx-auto px-6">
+    <div class="max-w-4xl mx-auto text-center mb-16" data-aos="fade-up">
+      <h2 class="text-4xl font-display font-bold text-secondary mb-6">Nuestros Servicios</h2>
+      <p class="text-lg text-gray-600 leading-relaxed">
+        En Trea Work, nos dedicamos a potenciar tu éxito académico y profesional con soluciones a tu medida. Descubre cómo podemos ayudarte:
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8">
+      {services.map((service) => (
+        <div
+          class="p-8 bg-white shadow-xl shadow-blue-500/10 hover:shadow-blue-500/20 rounded-xl transition-all duration-300 transform hover:-translate-y-1 flex flex-col"
+          data-aos="fade-up"
+          data-aos-delay={services.indexOf(service) * 100}
+        >
+          <div class="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mb-6 text-3xl">
+            {service.icon}
+          </div>
+          <h3 class="font-display font-bold text-2xl text-secondary mb-4">{service.title}</h3>
+          <p class="text-gray-700 mb-6 flex-grow">{service.description}</p>
+          <a
+            href={service.ctaLink}
+            class="mt-auto inline-block bg-primary text-white text-center px-6 py-3 rounded-lg hover:bg-primary/90 transition-colors duration-300 self-start"
+          >
+            {service.ctaText}
+          </a>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  // Ensure AOS is initialized if this component is loaded independently
+  // or if AOS is not globally initialized in a way that covers dynamic content.
+  // If Layout.astro or index.astro already initializes AOS and it works, this might not be needed.
+  // AOS is initialized globally in Layout.astro
+</script>

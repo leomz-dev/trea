@@ -1,27 +1,81 @@
 ---
 import '@fontsource/inter/400.css';
+import '@fontsource/inter/500.css'; // Added 500 weight
 import '@fontsource/inter/700.css';
 import '@fontsource/space-grotesk/700.css';
-
+import 'aos/dist/aos.css'; // Import AOS styles globally
 
 interface Props {
   title: string;
+  description?: string; // Optional description
 }
 
-const { title } = Astro.props;
+const { title, description = "TreaWork: Tu aliado estratégico en éxito académico y profesional. Ofrecemos apoyo educativo y soluciones profesionales personalizadas." } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en" class="scroll-smooth">
+<html lang="es" class="scroll-smooth scroll-pt-20"> {/* Changed lang to 'es', added scroll-pt for fixed navbar */}
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Agencia de apoyo academico y profesional." />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> {/* Added initial-scale */}
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> {/* Ensure favicon.svg exists in public/ */}
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
+    <title>{title} - TreaWork</title> {/* Added site name to title */}
+
+    {/* Basic Open Graph Tags for better sharing */}
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    {/* <meta property="og:image" content="/og-image.jpg" /> Replace with actual image URL */}
+    {/* <meta property="og:url" content={Astro.url} /> */}
+
+
+    <style is:global>
+      /* Define primary and secondary colors as CSS variables for easier theming if needed */
+      :root {
+        --color-primary: #007BFF; /* Example: Blue */
+        --color-secondary: #343A40; /* Example: Dark Gray */
+        --font-body: 'Inter', sans-serif;
+        --font-display: 'Space Grotesk', sans-serif;
+      }
+
+      body {
+        font-family: var(--font-body);
+        color: var(--color-secondary); /* Default text color */
+        @apply bg-white antialiased; /* Tailwind's antialiased for smoother fonts */
+      }
+
+      .font-display {
+        font-family: var(--font-display);
+      }
+
+      /* Custom scrollbar for a more modern look (optional) */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #c4c4c4; /* Softer scrollbar color */
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #a8a8a8;
+      }
+    </style>
   </head>
-  <body class="bg-white">
+  <body class="text-gray-800"> {/* Default text color */}
     <slot />
+    <script>
+      import AOS from 'aos';
+      AOS.init({
+        duration: 800, // Animation duration
+        once: true,    // Whether animation should happen only once - while scrolling down
+        offset: 50,   // Offset (in px) from the original trigger point
+        easing: 'ease-in-out', // Default easing for AOS animations
+      });
+    </script>
   </body>
 </html>

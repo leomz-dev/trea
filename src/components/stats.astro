@@ -1,24 +1,32 @@
 ---
+const stats = [
+  { name: 'Clientes Satisfechos', value: '100%', description: 'Con la calidad y eficiencia de nuestro trabajo.' },
+  { name: '+200 Solicitudes', value: '+200', description: 'Procesadas exitosamente cada mes.' },
+  { name: 'Mentores Expertos', value: '10+', description: 'Disponibles para guiarte en tu camino.' },
+];
 ---
 
-<section id="stats">
-    <div class="bg-white py-24 sm:py-32">
-        <div class="mx-auto max-w-7xl px-6 lg:px-8 bg-red py-5 ">
-          <dl class="grid grid-cols-1 gap-x-8 gap-y-16 text-center lg:grid-cols-3">
-            <div class="mx-auto flex max-w-xs flex-col gap-y-4">
-              <dt class="text-base/7 text-gray-600">Clientes satisfechos con su trabajo.</dt>
-              <dd class="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl">100%</dd>
-            </div>
-            <div class="mx-auto flex max-w-xs flex-col gap-y-4 ">
-              <dt class="text-base/7 text-gray-600">solicitudes realizadas cada mes.</dt>
-              <dd class="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl">+200</dd>
-            </div>
-            <div class="mx-auto flex max-w-xs flex-col gap-y-4">
-              <dt class="text-base/7 text-gray-600">Mentores disponibles.</dt>
-              <dd class="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl">10</dd>
-            </div>
-          </dl>
-        </div>
-      </div>    
+<section id="stats" class="py-20 bg-gradient-to-b from-gray-50 to-white"> {/* Subtle gradient */}
+  <div class="container mx-auto px-6">
+    <div class="max-w-5xl mx-auto" data-aos="fade-up">
+      <h2 class="text-3xl font-display font-bold text-secondary text-center mb-4">
+        Resultados que Inspiran Confianza
+      </h2>
+      <p class="text-center text-gray-600 text-lg mb-12">
+        Nuestros números hablan por sí mismos. Estamos comprometidos con tu éxito.
+      </p>
+      <dl class="grid grid-cols-1 gap-x-8 gap-y-12 text-center md:grid-cols-3">
+        {stats.map((stat) => (
+          <div class="mx-auto flex max-w-xs flex-col gap-y-3 p-6 bg-white shadow-lg rounded-xl border border-gray-200/80">
+            <dt class="text-base leading-7 text-gray-600">{stat.description}</dt>
+            <dd class="order-first text-4xl font-bold tracking-tight text-primary sm:text-5xl">
+              {stat.value}
+            </dd>
+            <p class="text-lg font-semibold text-secondary mt-1">{stat.name}</p>
+          </div>
+        ))}
+      </dl>
+    </div>
+  </div>
 </section>
 

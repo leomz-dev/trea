@@ -1,29 +1,31 @@
 ---
 const navItems = [
   { href: '#home', text: 'Inicio' },
+  { href: '#services', text: 'Servicios' }, // Updated href to #services
   { href: '#about', text: 'Sobre nosotros' },
-  { href: '#projects', text: 'Servicios' },
+  { href: '#contact', text: 'Contacto' }, // Added Contact link
 ];
 ---
 
-<header class="fixed w-full top-0 z-50 bg-white/80 backdrop-blur-sm">
+<header class="fixed w-full top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm"> {/* Slightly more opaque, added shadow */}
   <nav class="container mx-auto px-6 py-4">
     <div class="flex items-center justify-between">
-      <a href="#" class="text-2xl font-display font-bold text-secondary">
-        Treaa<span class="text-primary">.</span>
+      <a href="#home" class="text-2xl font-display font-bold text-secondary"> {/* Changed href to #home */}
+        Trea<span class="text-primary">Work</span> {/* Corrected Name */}
       </a>
-      <ul class="hidden md:flex space-x-8">
+      <ul class="hidden md:flex space-x-6 lg:space-x-8"> {/* Adjusted spacing */}
         {navItems.map((item) => (
           <li>
             <a
               href={item.href}
-              class="text-secondary hover:text-primary transition-colors duration-300"
+              class="text-gray-700 hover:text-primary transition-colors duration-300 font-medium" /* Adjusted styling */
             >
               {item.text}
             </a>
           </li>
         ))}
       </ul>
+      {/* Mobile menu button (optional, can be added later if needed) */}
     </div>
   </nav>
 </header>
