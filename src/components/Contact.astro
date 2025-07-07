@@ -1,77 +1,107 @@
 ---
-const whatsappBaseURL = "https://wa.me/573046101560";
+const whatsappBaseURL = "https://wa.me/573046101560"; // Your WhatsApp number
+const servicesForForm = [
+  { id: 'apoyo-educativo', label: 'Apoyo Educativo Personalizado' },
+  { id: 'soluciones-profesionales', label: 'Soluciones Profesionales Eficientes' },
+  { id: 'otro', label: 'Otro (especificar)' },
+];
 ---
 
-<section id="contact" class="py-20">
+<section id="contact" class="py-20 bg-white">
   <div class="container mx-auto px-6">
     <div class="max-w-3xl mx-auto text-center" data-aos="fade-up">
-      <h2 class="text-4xl font-display font-bold text-secondary mb-6">¡Contáctanos!</h2>
-      <p class="text-lg text-gray-600 mb-6">
-        ¿Necesitas alguno de nuestros servicios? ¡No dudes en contactarnos!
+      <h2 class="text-4xl font-display font-bold text-secondary mb-4">¿Listo para Empezar?</h2>
+      <p class="text-lg text-gray-700 mb-10 leading-relaxed">
+        Cuéntanos sobre tu necesidad o proyecto. Estamos aquí para ayudarte a alcanzar tus objetivos.
       </p>
+    </div>
 
-      <form id="contact-form" class="text-left space-y-4 max-w-xl mx-auto">
+    <div class="max-w-xl mx-auto bg-gray-50 p-8 rounded-xl shadow-xl border border-gray-200/80" data-aos="fade-up" data-aos-delay="100">
+      <form id="contact-form" class="space-y-6">
         <div>
-          <label for="name" class="block text-gray-700 font-medium mb-2">Nombre</label>
+          <label for="name" class="block text-sm font-medium text-gray-800 mb-1">Nombre Completo</label>
           <input type="text" id="name" name="name" required
-            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" />
+            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-shadow"
+            placeholder="Ej: Ana Pérez" />
         </div>
 
         <div>
-          <label for="interest" class="block text-gray-700 font-medium mb-2">¿En qué estás interesado?</label>
-          <input type="text" id="interest" name="interest" required
-            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" />
+          <label for="email" class="block text-sm font-medium text-gray-800 mb-1">Correo Electrónico (Opcional)</label>
+          <input type="email" id="email" name="email"
+            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-shadow"
+            placeholder="Ej: ana.perez@ejemplo.com" />
         </div>
 
         <div>
-          <span class="block text-gray-700 font-medium mb-2">Servicios:</span>
-          <label class="flex items-center space-x-2 mb-2">
-            <input type="checkbox" value="Clases personalizadas" class="service-checkbox accent-green-500" />
-            <span>Clases personalizadas</span>
-          </label>
-          <label class="flex items-center space-x-2">
-            <input type="checkbox" value="Resolver trabajos" class="service-checkbox accent-green-500" />
-            <span>Resolver trabajos</span>
-          </label>
+          <label for="service-interest" class="block text-sm font-medium text-gray-800 mb-1">Servicio de Interés</label>
+          <select id="service-interest" name="service-interest" required
+            class="w-full px-4 py-3 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-shadow">
+            <option value="" disabled selected>Selecciona un servicio...</option>
+            {servicesForForm.map(service => <option value={service.label}>{service.label}</option>)}
+          </select>
         </div>
 
-        <div class="text-center">
+        <div>
+          <label for="message" class="block text-sm font-medium text-gray-800 mb-1">Tu Mensaje</label>
+          <textarea id="message" name="message" rows="4" required
+            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-shadow"
+            placeholder="Describe brevemente tu consulta o lo que necesitas..."></textarea>
+        </div>
+
+        <div class="text-center pt-2">
           <a 
             id="whatsapp-link"
-            href="https://wa.me/573006423061?text=Hola,%20quiero%20más%20información" 
+            href={whatsappBaseURL + "?text=" + encodeURIComponent("Hola TreaWork, estoy interesado en sus servicios.")}
             target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center w-full sm:w-auto bg-green-500 hover:bg-green-600 transition-colors text-white font-semibold py-3 px-8 rounded-lg text-lg shadow-md hover:shadow-lg transform hover:scale-105"
           >
-            <button type="button"
-              class="bg-green-500 hover:bg-green-600 transition-colors text-white font-semibold py-4 px-6 rounded-xl">
-              Escríbenos por WhatsApp
-            </button>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+            </svg>
+            Enviar por WhatsApp
           </a>
+          <p class="text-xs text-gray-500 mt-3">Serás redirigido a WhatsApp para enviar tu mensaje.</p>
         </div>
       </form>
     </div>
   </div>
 
-  <script type="text/javascript">
+  <script define:vars={{ whatsappBaseURL }}>
+    const contactForm = document.getElementById("contact-form");
     const nameInput = document.getElementById("name");
-    const interestInput = document.getElementById("interest");
-    const serviceCheckboxes = document.querySelectorAll(".service-checkbox");
+    const emailInput = document.getElementById("email");
+    const serviceInterestInput = document.getElementById("service-interest");
+    const messageInput = document.getElementById("message");
     const whatsappLink = document.getElementById("whatsapp-link");
 
     function updateWhatsAppLink() {
       const name = nameInput.value.trim();
-      const interest = interestInput.value.trim();
+      const email = emailInput.value.trim();
+      const serviceInterest = serviceInterestInput.value;
+      const messageText = messageInput.value.trim();
 
-      const selectedServices = Array.from(serviceCheckboxes)
-        .filter(cb => cb.checked)
-        .map(cb => cb.value)
-        .join(", ");
+      let fullMessage = `Hola TreaWork, mi nombre es ${name}.`;
+      if (email) {
+        fullMessage += `\nCorreo: ${email}`;
+      }
+      if (serviceInterest) {
+        fullMessage += `\nEstoy interesado/a en: ${serviceInterest}.`;
+      }
+      if (messageText) {
+        fullMessage += `\n\nMensaje: ${messageText}`;
+      } else {
+        fullMessage += `\n\nMe gustaría obtener más información sobre sus servicios.`;
+      }
 
-      const message = `Hola, soy ${name}, estoy interesado en ${interest} del servicio ${selectedServices}`;
-      const encodedMessage = encodeURIComponent(message);
-      whatsappLink.href = `https://wa.me/573046101560?text=${encodedMessage}`;
+      const encodedMessage = encodeURIComponent(fullMessage);
+      whatsappLink.href = `${whatsappBaseURL}?text=${encodedMessage}`;
     }
 
-    // Actualizar el href cada vez que se cambie algo en el formulario
-    document.getElementById("contact-form").addEventListener("input", updateWhatsAppLink);
+    if (contactForm) {
+      contactForm.addEventListener("input", updateWhatsAppLink);
+      // Initialize link on page load as well
+      updateWhatsAppLink();
+    }
   </script>
 </section>

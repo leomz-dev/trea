@@ -1,31 +1,39 @@
 ---
-  import 'aos/dist/aos.css';
-  import AOS from 'aos';
+  // AOS is typically initialized globally, e.g. in Layout.astro or index.astro's script tag.
+  // If not, uncomment these lines:
 ---
 
-<section id="home" class="min-h-screen flex items-center pt-20">
-  <div class="container mx-auto px-4 md:px-6">
-    <div class="max-w-4xl flex items-center justify-center flex-col mx-auto" data-aos="zoom-in-up">
-      <h1 class="hero-tittle text-4xl md:text-6xl text-center font-bold text-secondary mb-2">
-        Hola, somos Trea.
+<section id="home" class="min-h-screen flex items-center justify-center bg-gradient-to-br from-white to-gray-100 pt-24 pb-12 md:pt-32 md:pb-20"> {/* Adjusted padding and added subtle gradient */}
+  <div class="container mx-auto px-6 text-center"> {/* Centered text for the whole section */}
+    <div class="max-w-3xl mx-auto" data-aos="fade-up"> {/* Adjusted max-width and AOS animation */}
+      <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-secondary mb-4 font-display">
+        Hola, somos <span class="text-primary">TreaWork</span>.
       </h1>
-      <h3 class="hero-tittle text-[20px] md:text-4xl text-center font-display font-bold text-secondary mb-2">
-        Tu mayor aliado academico y profesional.</h3>
-      <p class="text-xl md:text-2xl text-center text-gray-600 mb-8">
-        Ofrecemos soluciones Inteligentes para tus Desafíos Académicos y Profesionales.
+      <h2 class="text-2xl sm:text-3xl md:text-4xl font-semibold text-secondary mb-6"> {/* Changed h3 to h2 for better hierarchy */}
+        Tu Aliado Estratégico en Éxito Académico y Profesional.
+      </h2>
+      <p class="text-lg md:text-xl text-gray-700 mb-10 leading-relaxed"> {/* Adjusted text color and leading */}
+        Transformamos tus desafíos en logros con soluciones inteligentes y personalizadas.
       </p>
-      <div class="flex gap-4 justify-left flex-col md:flex-row">
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <a
-          href="#contact"
-          class="bg-primary border-2 border-primary flex justify-center items-center min-h-[30px] max-w-[250px] text-white text-center px-8 py-3 rounded-lg hover:bg-primary/90 transition-colors duration-300 "
+          href="#services"
+          class="bg-primary border-2 border-primary text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-primary/90 transition-all duration-300 transform hover:scale-105 flex items-center justify-center"
         >
-          ¡Contactanos!
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd" />
+          </svg>
+          Ver Servicios
         </a>
         <a
-          href="#projects"
-          class="border-2 text-center min-h-[30px] max-w-[250px] border-secondary text-secondary px-8 py-3 rounded-lg text-lg hover:bg-secondary hover:text-white transition-colors duration-300"
+          href="#contact"
+          class="bg-transparent border-2 border-secondary text-secondary px-8 py-3 rounded-lg text-lg font-semibold hover:bg-secondary hover:text-white transition-all duration-300 transform hover:scale-105 flex items-center justify-center"
         >
-          Nuestros servicios.
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+            <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+          </svg>
+          Contáctanos
         </a>
       </div>
     </div>
@@ -33,9 +41,4 @@
 </section>
 
 <script>
-  import AOS from 'aos';
-  AOS.init({
-    duration: 1000, // duración en ms
-    once: false,     // solo una vez por scroll
-  });
 </script>
