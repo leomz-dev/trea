@@ -1,18 +1,27 @@
 ---
   // AOS is typically initialized globally, e.g. in Layout.astro or index.astro's script tag.
   // If not, uncomment these lines:
+  const heroImageUrl = "https://images.pexels.com/photos/3184418/pexels-photo-3184418.webp?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
 ---
 
-<section id="home" class="min-h-screen flex items-center justify-center bg-gradient-to-br from-white to-gray-100 pt-24 pb-12 md:pt-32 md:pb-20"> {/* Adjusted padding and added subtle gradient */}
-  <div class="container mx-auto px-6 text-center"> {/* Centered text for the whole section */}
-    <div class="max-w-3xl mx-auto" data-aos="fade-up"> {/* Adjusted max-width and AOS animation */}
-      <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-secondary mb-4 font-display">
+<section
+  id="home"
+  class="relative min-h-screen flex items-center justify-center pt-24 pb-12 md:pt-32 md:pb-20 text-white"
+  style={`background-image: url('${heroImageUrl}'); background-size: cover; background-position: center;`}
+>
+  {/* Overlay for better text readability */}
+  <div class="absolute inset-0 bg-black opacity-50"></div>
+
+  {/* Content container, needs to be relative to be above the overlay */}
+  <div class="relative container mx-auto px-6 text-center">
+    <div class="max-w-3xl mx-auto" data-aos="fade-up">
+      <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 font-display"> {/* text-secondary removed, will be white */}
         Hola, somos <span class="text-primary">TreaWork</span>.
       </h1>
-      <h2 class="text-2xl sm:text-3xl md:text-4xl font-semibold text-secondary mb-6"> {/* Changed h3 to h2 for better hierarchy */}
+      <h2 class="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-100 mb-6"> {/* Changed text color */}
         Tu Aliado Estratégico en Éxito Académico y Profesional.
       </h2>
-      <p class="text-lg md:text-xl text-gray-700 mb-10 leading-relaxed"> {/* Adjusted text color and leading */}
+      <p class="text-lg md:text-xl text-gray-200 mb-10 leading-relaxed"> {/* Changed text color */}
         Transformamos tus desafíos en logros con soluciones inteligentes y personalizadas.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
@@ -27,7 +36,7 @@
         </a>
         <a
           href="#contact"
-          class="bg-transparent border-2 border-secondary text-secondary px-8 py-3 rounded-lg text-lg font-semibold hover:bg-secondary hover:text-white transition-all duration-300 transform hover:scale-105 flex items-center justify-center"
+          class="bg-transparent border-2 border-white text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-white hover:text-secondary transition-all duration-300 transform hover:scale-105 flex items-center justify-center"
         >
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
             <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />

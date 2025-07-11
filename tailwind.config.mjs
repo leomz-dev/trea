@@ -4,8 +4,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: [ 'sans-serif', 'montserrat'],
-        display: ['Space Grotesk', 'sans-serif'],
+        sans: ['Poppins', 'sans-serif'],
+        display: ['Montserrat', 'sans-serif'],
       },
       colors: {
         primary: '#2563eb',

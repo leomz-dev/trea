@@ -2,14 +2,16 @@
 // src/components/Services.astro
 const services = [
   {
-    icon: '📚', // Placeholder icon, consider using SVG icons for consistency
+    imageUrl: "https://images.pexels.com/photos/3861958/pexels-photo-3861958.webp?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    imageAlt: "Student learning online",
     title: 'Apoyo Educativo Personalizado',
     description: 'Ofrecemos clases particulares y grupales en diversas asignaturas, adaptadas a las necesidades de cada estudiante. Ayuda con tareas, preparación para exámenes y refuerzo académico general para jóvenes y adultos.',
     ctaText: 'Más Información',
     ctaLink: '#contact', // Or a more specific link if available
   },
   {
-    icon: '💼', // Placeholder icon
+    imageUrl: "https://images.pexels.com/photos/4427610/pexels-photo-4427610.webp?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    imageAlt: "Modern office workspace",
     title: 'Soluciones Profesionales Eficientes',
     description: 'Asistencia en la elaboración de proyectos, presentaciones, informes y otros trabajos profesionales. Optimizamos tu tiempo y te ayudamos a alcanzar tus metas con entregables de alta calidad.',
     ctaText: 'Cotizar Servicio',
@@ -34,9 +36,7 @@ const services = [
           data-aos="fade-up"
           data-aos-delay={services.indexOf(service) * 100}
         >
-          <div class="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mb-6 text-3xl">
-            {service.icon}
-          </div>
+          <img src={service.imageUrl} alt={service.imageAlt} class="w-full h-48 object-cover rounded-lg mb-6" />
           <h3 class="font-display font-bold text-2xl text-secondary mb-4">{service.title}</h3>
           <p class="text-gray-700 mb-6 flex-grow">{service.description}</p>
           <a
