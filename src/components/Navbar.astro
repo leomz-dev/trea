@@ -2,101 +2,65 @@
 const navItems = [
   { href: '#home', text: 'Inicio' },
   { href: '#services', text: 'Servicios' },
-  { href: '#about', text: 'Sobre Nosotros' }, // Adjusted capitalization
-  { href: '#contact', text: 'Contacto' },
+  { href: '#about', text: 'Sobre Nosotros' }
 ];
 ---
 
-<header class="fixed w-full top-0 z-50 bg-white/95 backdrop-blur-lg shadow-sm"> {/* Increased opacity slightly, increased blur */}
-  <nav class="container mx-auto px-4 sm:px-6 py-4"> {/* Adjusted padding for smaller screens */}
-    <div class="flex items-center justify-between">
-      <a href="#home" class="text-2xl font-display font-bold text-secondary hover:text-primary transition-colors">
-        Trea<span class="text-primary">Work</span>
-      </a>
+<header class="fixed w-full top-0 z-50 ">
+  <nav class="container mx-auto px-4 sm:px-6 py-3 flex justify-between items-center">
+    <a href="#home" class="text-xl font-display font-bold bg-white p-2 rounded-md text-secondary hover:text-primary transition-colors">
+      Trea<span class="text-primary">Work</span>
+    </a>
 
-      {/* Desktop Navigation */}
-      <ul class="hidden md:flex items-center space-x-6 lg:space-x-8">
+    {/* Desktop Navigation */}
+    <div class="hidden md:flex items-center">
+      <ul class="flex items-center space-x-6 bg-white p-3 rounded-md">
         {navItems.map((item) => (
           <li>
-            <a
-              href={item.href}
-              class="text-gray-700 hover:text-primary transition-colors duration-300 font-medium pb-1 border-b-2 border-transparent hover:border-primary/70"
-            >
+            <a href={item.href} class="p2 text-secondary hover:text-primary transition-colors border-b-2 border-transparent hover:border-primary">
               {item.text}
             </a>
           </li>
         ))}
-        <li>
-          <a href="#contact" class="bg-primary text-white px-5 py-2 rounded-lg text-sm font-semibold hover:bg-primary/90 transition-colors duration-300">
-            Contáctanos Ahora
-          </a>
-        </li>
       </ul>
-
-      {/* Mobile Menu Button */}
-      <div class="md:hidden">
-        <button id="mobile-menu-button" aria-label="Open Menu" aria-expanded="false" class="text-secondary hover:text-primary focus:outline-none">
-          <svg class="w-7 h-7" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-            <path d="M4 6h16M4 12h16m-7 6h7"></path> {/* Hamburger Icon */}
-          </svg>
-        </button>
-      </div>
     </div>
 
-    {/* Mobile Menu (initially hidden) */}
-    <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-white/95 backdrop-blur-md shadow-xl rounded-b-lg z-40 border-t border-gray-200/70"> {/* Enhanced styling */}
-      <ul class="flex flex-col items-center py-5 space-y-4"> {/* Increased padding and spacing */}
-        {navItems.map((item) => (
-          <li>
-            <a
-              href={item.href}
-              class="text-gray-800 hover:text-primary transition-colors duration-300 font-semibold text-lg mobile-menu-link px-4 py-2 rounded-md hover:bg-primary/10 w-full text-center block"
-            >
-              {item.text}
-            </a>
-          </li>
-        ))}
-        <li class="pt-2 w-full px-6"> {/* Added padding top for separator and full width for button container */}
-          <a href="#contact" class="w-full block bg-primary text-white px-6 py-3 rounded-lg text-base font-semibold hover:bg-primary/80 transition-colors duration-300 mt-2 mobile-menu-link text-center shadow-md hover:shadow-lg">
-            Contáctanos Ahora
-          </a>
-        </li>
-      </ul>
+    <div>
+      <a 
+      href="#contact" class="hidden md:flex text-xl font-normal bg-white p-2 rounded-md text-secondary hover:text-primary transition-colors">
+      Contactanos
+      </a>
+    </div>
+
+    {/* Mobile Navigation Button */}
+    <div class="md:hidden">
+      <button id="mobile-menu-button" class="text-secondary focus:outline-none">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+      </button>
     </div>
   </nav>
+
+  {/* Mobile Navigation Menu */}
+  <div id="mobile-menu" class="hidden md:hidden">
+    <ul class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+      {navItems.map((item) => (
+        <li>
+          <a href={item.href} class="block p-3 bg-white text-secondary hover:text-primary rounded-md px-3 py-2 text-base font-medium">
+            {item.text}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
 </header>
 
 <script>
   const mobileMenuButton = document.getElementById('mobile-menu-button');
   const mobileMenu = document.getElementById('mobile-menu');
-  const mobileMenuLinks = mobileMenu?.querySelectorAll('.mobile-menu-link'); // Get all links in the mobile menu
 
-  mobileMenuButton?.addEventListener('click', () => {
-    const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true' || false;
-    mobileMenuButton.setAttribute('aria-expanded', "!isExpanded");
-    mobileMenu?.classList.toggle('hidden');
-
-    // Optional: Change hamburger to X icon when menu is open
-    const icon = mobileMenuButton.querySelector('svg');
-    if (icon) {
-      if (!isExpanded) {
-        icon.innerHTML = '<path d="M6 18L18 6M6 6l12 12"></path>'; // X icon
-      } else {
-        icon.innerHTML = '<path d="M4 6h16M4 12h16m-7 6h7"></path>'; // Hamburger icon
-      }
-    }
-  });
-
-  // Add event listener to each link in the mobile menu to close the menu on click
-  mobileMenuLinks?.forEach(link => {
-    link.addEventListener('click', () => {
-      mobileMenu?.classList.add('hidden');
-      mobileMenuButton?.setAttribute('aria-expanded', 'false');
-      // Reset icon to hamburger
-      const icon = mobileMenuButton?.querySelector('svg');
-      if (icon) {
-        icon.innerHTML = '<path d="M4 6h16M4 12h16m-7 6h7"></path>';
-      }
-    });
+  mobileMenuButton.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
   });
 </script>
